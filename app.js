@@ -30,8 +30,15 @@ app.put('/api/:item/:id', api.editItem);
 app.delete('/api/:item/:id', api.deleteItem);
 
 //Start Server
-// http.createServer(app).listen(app.get('port'), function(){
-//   console.log('Express server listening on port ' + app.get('port'));
-// })
-app.listen(5000, 'localhost');
-console.log('Listening on port 5000');
+// app.listen(5000, 'localhost');
+// console.log('Listening on port 5000');
+app.set('port', (process.env.PORT || 5000));
+
+
+// app.get('/cool', function(request, response) {
+//   response.send(cool());
+// });
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
